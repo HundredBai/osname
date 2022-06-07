@@ -5,6 +5,7 @@ package osname
 import (
 	"encoding/xml"
 	"errors"
+	"fmt"
 	"io"
 	"os"
 )
@@ -30,7 +31,7 @@ func osname() (string, error) {
 		}
 	}
 	if id < len(p.Dict.String) {
-		return p.Dict.String[id], nil
+		return fmt.Sprintf("macOS %s", p.Dict.String[id]), nil
 	}
 	return "", errors.New("decode plist failed")
 }
